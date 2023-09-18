@@ -12,6 +12,32 @@ GROUP_ID = os.getenv('GROUP_ID')
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
+# answers = [
+#     ("6", "7", "8"),
+#     ("0", "9", "-1"),
+# ]
+
+# def makekeyboard(question_id: str):
+#     markup = types.InlineKeyboardMarkup()
+#     for answer_id, answer in enumerate(answers[question_id]):
+#         markup.add(types.InlineKeyboardButton(text=answer, callback_data=f"{question_id}_{answer_id}"))
+#     return markup
+
+# @bot.message_handler(commands=['test'])
+# def handle_test(msg: types.Message):
+#     if msg.from_user.id != msg.chat.id:
+#         return 
+#     bot.send_message(chat_id=msg.chat.id,
+#                     text="2 + 4 = ?",
+#                     reply_markup=makekeyboard(0),
+#                     parse_mode='HTML')
+
+# @bot.callback_query_handler(func=lambda call:True)
+# def handle_answer(cb: types.CallbackQuery):
+#     question_id, answer_id = cb.data.split("_")
+#     bot.edit_message_text("4+5 = ?")
+#     bot.edit_message_reply_markup(makekeyboard(1))
+
 @bot.message_handler(commands=['start'])
 def handle_start(msg: types.Message):
     if msg.from_user.id != msg.chat.id:
